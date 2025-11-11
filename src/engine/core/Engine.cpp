@@ -24,9 +24,8 @@ bool Engine::initialize() {
 
 void Engine::run() {
     std::cout << "Engine running (stub loop)...\n";
-    // TODO: Main game loop
     while (m_running) {
-        // Placeholder: exit after one frame
+        // placeholder – exit after one frame
         m_running = false;
     }
 }
