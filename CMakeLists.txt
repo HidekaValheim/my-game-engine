@@ -1,20 +1,17 @@
 cmake_minimum_required(VERSION 3.20)
 project(MyGameEngine LANGUAGES CXX)
 
-# --- C++ Standard ---
+# vcpkg toolchain
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    set(CMAKE_TOOLCHAIN_FILE "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+endif()
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# --- Build Type ---
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
-endif()
+find_package(SDL2 CONFIG REQUIRED)
+find_package(glad CONFIG REQUIRED)
 
-# --- Subdirectories ---
-add_subdirectory(src)
-add_subdirectory(third_party)
-
-# --- Optional: Enable testing ---
-# enable_testing()
-# add_subdirectory(tests)
+# THIS LINE IS THE FIX:
+add_subdirectory(src "${CMAKE_CURRENT_BINARY_DIR}/src")
