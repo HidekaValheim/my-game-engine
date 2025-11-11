@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(MyGameEngine LANGUAGES CXX)
 
-# vcpkg toolchain
+# vcpkg
 if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
     set(CMAKE_TOOLCHAIN_FILE "$ENV{HOME}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 endif()
@@ -13,5 +13,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(SDL2 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)
 
-# THIS LINE IS THE FIX:
+# Build everything
 add_subdirectory(src "${CMAKE_CURRENT_BINARY_DIR}/src")
+
+# GROK NUCLEAR OPTION: FORCE VS TO RUN FROM PROJECT ROOT — NO TARGET NAME NEEDED
+if(MSVC)
+    set(CMAKE_VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+    message(STATUS "GROK: VS WILL NOW RUN FROM PROJECT ROOT — NO TARGET NAME BULLSHIT")
+endif()
