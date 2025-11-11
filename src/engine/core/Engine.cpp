@@ -25,7 +25,6 @@ bool Engine::initialize() {
 void Engine::run() {
     std::cout << "Engine running (stub loop)...\n";
     while (m_running) {
-        // placeholder – exit after one frame
         m_running = false;
     }
 }
