@@ -1,2 +1,1 @@
-# my-game-engine
-Game engine built using grok assistance
+# My Game Engine\n\nBuilt from scratch with Grok.
