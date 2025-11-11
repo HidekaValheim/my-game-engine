@@ -1,2 +1,2 @@
 # My Game Engine
-nBuilt from scratch with Grok.
+Built from scratch with Grok.
